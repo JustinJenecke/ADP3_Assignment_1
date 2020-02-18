@@ -24,6 +24,29 @@ public class App
    private BufferedReader br = null;
    private PreparedStatement ps = null;
 
+        public boolean  isIsogram(String str) {
+
+            if (str.isEmpty())
+                return true;
+
+            int count = 0;
+
+            for (int i = 0; i < str.length(); i++){
+                for (int j = 0; j < str.length(); j++){
+                    if (i != j)
+                        if (String.valueOf(str.charAt(i))
+                                .equalsIgnoreCase(String.valueOf(str.charAt(j)))) {
+                            count++;
+                            break;
+                        }
+                }
+                if (count != 0)
+                    break;
+            }
+
+            return count == 0;
+        }
+
    // ucanaccess is in the list of dependencies in the pom.xml file.
    public void setConn(){
        try {
@@ -44,6 +67,12 @@ public class App
 
            while (line != null){
                 fillTable(line);
+                boolean iso = isIsogram(line);
+
+                if (iso)
+               System.out.println(line +" : (isogram)");
+                else
+                    System.out.println(line + " : not an isogram");
                line = br.readLine();
            }
        }catch ( /*FileNotFoundException*/ IOException e){
