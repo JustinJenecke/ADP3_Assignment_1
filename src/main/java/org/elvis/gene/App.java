@@ -76,7 +76,7 @@ public class App
                 if (iso)
                System.out.println(line +" : (isogram)");
                 else
-                    System.out.println(line + " : not an isogram");
+                    System.out.println(line + " : (not an isogram)");
                line = br.readLine();
            }
        }catch ( /*FileNotFoundException*/ IOException e){
