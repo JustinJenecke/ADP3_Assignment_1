@@ -12,9 +12,7 @@
 
 package org.elvis.gene;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 
 public class App
@@ -23,6 +21,7 @@ public class App
    private Statement statement = null;
    private BufferedReader br = null;
    private PreparedStatement ps = null;
+   private ObjectOutputStream ois = null;
 
    // ucanaccess is in the list of dependencies in the pom.xml file.
    public void setConn(){
@@ -41,9 +40,11 @@ public class App
        try {
            br = new BufferedReader(new FileReader("fam_list.txt"));
            String line = br.readLine();
+           ois = new ObjectOutputStream(new FileOutputStream("names_ser.ser"));
 
            while (line != null){
                 fillTable(line);
+                ois.writeObject(line);
                line = br.readLine();
            }
        }catch ( /*FileNotFoundException*/ IOException e){
@@ -89,6 +90,8 @@ public class App
                statement.close();
            if (br != null)
                br.close();
+           if (ois != null)
+               ois.close();
            if (conn != null)
                conn.close();
        }catch (SQLException | IOException e){
