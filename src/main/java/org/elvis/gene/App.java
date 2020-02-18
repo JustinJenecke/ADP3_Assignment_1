@@ -1,13 +1,17 @@
-/*
-    Name: Elvis Presley Gene (217304338)
-    Date: 18 - 02 - 2020
- */
+
+    //Name: Elvis Presley Gene (217304338)
+   //Date: 18 - 02 - 2020
 
 /*
     First Maven project.
 
     Used the ucanaccess dependency in the pom.xml file
     not to have to download ucanacess and add it to the project.
+
+    Branches:
+    1- Master
+    2- isograms (implementing a new feature to check for names that are isograms)
+    3- serializeNames (feature to add the names into a serialized file)
  */
 
 package org.elvis.gene;
