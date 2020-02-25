@@ -33,6 +33,7 @@ public class App
        try {
            String url = "jdbc:ucanaccess://names_db.accdb";
            conn = DriverManager.getConnection(url);
+           System.out.println("Done By Justin Jenecke");
            System.out.println("Connection established");
 
            statement = conn.createStatement();
